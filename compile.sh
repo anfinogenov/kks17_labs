@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
-gcc `ls | grep .c$` -o main.out
+cd sources
+echo -n "Compilation start"
+time gcc `ls . | grep .c$` -o ../main.out &&
+echo -e "Compilation success!\n" &&
+cd .. 
 ./main.out
 
