@@ -3,7 +3,7 @@
 cd sources
 echo -n "Compilation start"
 time gcc `ls . | grep .c$` -o ../main.out &&
-echo -e "Compilation success!\n" &&
+echo -e "Compilation success!\n" 
 cd .. 
 ./main.out
 
