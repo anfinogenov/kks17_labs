@@ -7,7 +7,7 @@
 #include "../headers/vigenere_cipher.h"
 
 int main () {
-    printf("Some shit\n");
+    stack_demo();
     return 0;
 }
 
