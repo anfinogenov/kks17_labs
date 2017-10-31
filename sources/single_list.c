@@ -33,8 +33,9 @@ int peek (List* data) {
 }
 
 void stack_demo () {
+    puts("Stack demonstration func.");
     List* data = new_list(0);
-    printf("Created new list with initial value of 0\n");
+    puts("Created new list with initial value of 0");
     for (int i = 1; i < 5; i++) {
         push(&data, i);
         printf("Pushed: %d\n", i);
