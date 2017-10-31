@@ -6,7 +6,8 @@
 #include "../headers/single_list.h"
 #include "../headers/vigenere_cipher.h"
 
-int main () {
+int main (int argc, char *argv[]) {
+    caesar_demo(argc, argv);
     stack_demo();
     return 0;
 }
