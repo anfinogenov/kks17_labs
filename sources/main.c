@@ -11,6 +11,7 @@
 int main (int argc, char *argv[]) {
     srand(time(NULL));
     bubble_demo(0x50);
+    binary_demo();
     caesar_demo(argc, argv);
     stack_demo();
     return 0;
