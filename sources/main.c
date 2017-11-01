@@ -7,6 +7,7 @@
 #include "../headers/vigenere_cipher.h"
 
 int main (int argc, char *argv[]) {
+    binary_demo();
     caesar_demo(argc, argv);
     stack_demo();
     return 0;
