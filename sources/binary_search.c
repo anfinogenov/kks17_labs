@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../headers/binary_search.h"
+#include "../headers/sort.h"
 
 int binary_search(int* start, int* end, int value)
 {
@@ -22,25 +24,29 @@ int binary_search(int* start, int* end, int value)
             ret += half - start;
     }
 
+    while (start[ret-1] == value && ret > 0) ret--;
+
     return ret;
 }
 
-void binary_demo()
-{
-#define N 10
-    int array[N] = {1, 5, 6, 9, 9, 10, 14, 18, 20, 27};
+void binary_demo (void) {
+    puts("Binary search demonstration.");
+    int size = 10;
+    int max = 2*size + 1;
+    int array[size];
+    for (int i = 0; i < size; i++) {
+        array[i] = rand()%max;
+    }
 
-    printf("Binary search demonstration func.\n");
-    printf("Created array: ");
-    for (int i = 0; i < N; i++) printf("%d ", array[i]);
-    printf("\n");
+    bubble_sort(array, 0, size);
 
-    for (int i = 0; i < N; i++)
-        printf(
-                "found %d at %d\n",
-                array[i],
-                binary_search(array, array+N, array[i])
-              );
-#undef N
+    printf("Generated array: ");
+    for (int i = 0; i < size; i++) printf("%d ", array[i]);
+    puts("");
+
+    for (int i = -5; i < max+5; i++) {
+        int index = binary_search(array, array+size, i);
+        if (index != -1) printf("Found %d at %d\n", i, index);
+        else printf("Not found %d\n", i);
+    }
 }
-

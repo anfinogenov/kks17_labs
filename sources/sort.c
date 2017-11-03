@@ -32,6 +32,7 @@ void bubble_demo (int size) {
         puts("Incorrect size for bubble demo! Skipping...");
         return;
     }
+    puts("Bubble sort demonstration.");
     int test_array[size];
     for (int i = 0; i < size; i++) {
         test_array[i] = -50 + rand()%101;
