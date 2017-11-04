@@ -13,6 +13,41 @@ void bubble_sort (int* array, int start, int end) {
     }
 }
 
+void merge (int* array, int* helper, int low, int middle, int high) {
+    for (int i = low; i <= high; i++) {
+        helper[i] = array[i];
+    }
+    
+    int i = low;
+    int j = middle+1;
+    int k = low;
+
+    while (i <= middle && j <= high) {
+        if (helper[i] <= helper[j]) 
+            array[k++] = helper[i++];      
+        else array[k++] = helper[j++];   
+    }
+
+    while (i <= middle) {
+        array[k++] = helper[i++];
+    }
+}
+
+void merge_sort_recursive (int* array, int* helper, int low, int high) {
+    if (low < high) {
+        int middle = low + (high - low)/2;
+        merge_sort_recursive(array, helper, low, middle);
+        merge_sort_recursive(array, helper, middle+1, high);
+        merge(array, helper, low, middle, high);
+    }
+}
+
+void merge_sort(int* array, int start, int end) {
+    int* additional = (int*)calloc(end-start, sizeof(int));
+    merge_sort_recursive(array, additional, start, end-1);
+    free(additional);
+}
+
 void swap (int* v1, int* v2) {
     int temp = *v1;
     *v1 = *v2;
@@ -40,9 +75,35 @@ void bubble_demo (int size) {
 
     puts("Generated array: ");
     print_array(test_array, size);
+    
     puts("Sorting...");
+    //TODO: sort time
     bubble_sort (test_array, 0, size);
+    
     puts("Sorted array: ");
     print_array(test_array, size);
+    return;
 }
 
+void merge_demo (int size) {
+    if (size < 0 || size > 0xf000) {
+        puts("Incorrect size for merge demo! Skipping...");
+        return;
+    }
+    puts("Merge sort demonstration");
+    int test_array[size];
+    for (int i = 0; i < size; i++) {
+        test_array[i] = -size + rand()%(2*size+1);
+    }
+
+    puts("Generated array: ");
+    print_array(test_array, size);
+    
+    puts("Sorting...");
+    //TODO: sort time
+    merge_sort(test_array, 0, size);
+
+    puts("Sorted array: ");
+    print_array(test_array, size);
+    return;
+}

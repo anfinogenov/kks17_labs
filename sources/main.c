@@ -10,10 +10,10 @@
 
 int main (int argc, char *argv[]) {
     srand(time(NULL));
-    bubble_demo(0x50);
+    bubble_demo(0x100);
+    merge_demo(0x100);
     binary_demo();
     caesar_demo(argc, argv);
     stack_demo();
     return 0;
 }
-

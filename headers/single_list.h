@@ -1,3 +1,6 @@
+#ifndef SINGLE_LIST_H
+#define SINGLE_LIST_H
+
 typedef struct List {
     int value;
     struct List* next;
@@ -9,3 +12,4 @@ int pop (List** head);
 int peek (List* data);
 void stack_demo(void);
 
+#endif
