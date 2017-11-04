@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "../headers/sort.h"
 
@@ -63,47 +64,70 @@ void print_array (int* arr, int size) {
 }
 
 void bubble_demo (int size) {
-    if (size < 0 || size > 0xf000) {
-        puts("Incorrect size for bubble demo! Skipping...");
+    if (size < 0 || size > MAX_SORT_SIZE) {
+        puts("> Incorrect size for bubble demo! Skipping...");
         return;
     }
-    puts("Bubble sort demonstration.");
+
+    puts("> Bubble sort demonstration.");
+
+    int is_print = 0;
+    if (size <= MAX_PRINT_SIZE) is_print = 1;
+    else printf("Too large size, printing is disabled.\n");
+
     int test_array[size];
     for (int i = 0; i < size; i++) {
         test_array[i] = -50 + rand()%101;
     }
 
-    puts("Generated array: ");
-    print_array(test_array, size);
-    
+    if (is_print) {
+        puts("Generated array: ");
+        print_array(test_array, size);
+    }
+
     puts("Sorting...");
-    //TODO: sort time
+    clock_t start = clock();
     bubble_sort (test_array, 0, size);
+    clock_t end = clock();
+    printf("Sorting time (in CLOCKS): %lu\n", end-start);
     
-    puts("Sorted array: ");
-    print_array(test_array, size);
+    if (is_print) {
+        puts("Sorted array: ");
+        print_array(test_array, size);
+    }
     return;
 }
 
 void merge_demo (int size) {
-    if (size < 0 || size > 0xf000) {
-        puts("Incorrect size for merge demo! Skipping...");
+    if (size < 0 || size > MAX_SORT_SIZE) {
+        puts("> Incorrect size for merge demo! Skipping...");
         return;
     }
-    puts("Merge sort demonstration");
+    puts("> Merge sort demonstration");
+
+    int is_print = 0;
+    if (size <= MAX_PRINT_SIZE) is_print = 1;
+    else printf("Too large size, printing is disabled.\n");
+
     int test_array[size];
     for (int i = 0; i < size; i++) {
         test_array[i] = -size + rand()%(2*size+1);
     }
 
-    puts("Generated array: ");
-    print_array(test_array, size);
+    if (is_print) {
+        puts("Generated array: ");
+        print_array(test_array, size);
+    }
     
     puts("Sorting...");
-    //TODO: sort time
+    clock_t start = clock();
     merge_sort(test_array, 0, size);
+    clock_t end = clock();
+    printf("Sorting time (in CLOCKS): %lu\n", end-start);
 
-    puts("Sorted array: ");
-    print_array(test_array, size);
+    if (is_print) {
+        puts("Sorted array: ");
+        print_array(test_array, size);
+    }
     return;
 }

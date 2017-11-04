@@ -33,7 +33,7 @@ int peek (List* data) {
 }
 
 void stack_demo () {
-    puts("Stack demonstration func.");
+    puts("> Stack demonstration func.");
     List* data = new_list(0);
     puts("Created new list with initial value of 0");
     for (int i = 1; i < 5; i++) {

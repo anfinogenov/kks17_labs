@@ -30,7 +30,7 @@ int binary_search(int* start, int* end, int value)
 }
 
 void binary_demo (void) {
-    puts("Binary search demonstration.");
+    puts("> Binary search demonstration.");
     int size = 10;
     int max = 2*size + 1;
     int array[size];
