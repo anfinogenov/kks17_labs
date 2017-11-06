@@ -22,7 +22,7 @@ char vigenere_shift_letter (char c, char letter)
     else if (!islower(c) && temp > 'Z')
         temp -= 'z'-'a'+1;
 
-    return temp;
+    return toupper(temp);
 }
 
 // 15 points TODO
@@ -34,6 +34,8 @@ void vigenere_encrypt_file (FILE* fin, FILE* fout, char* key)
         char temp = fgetc(fin);
         if (temp == EOF)
             break;
+        if (temp == ' ')
+            continue;
 
         char errcatcher = fputc(vigenere_shift_letter(temp, key[key_i]), fout);
         if (errcatcher == EOF)
@@ -42,6 +44,7 @@ void vigenere_encrypt_file (FILE* fin, FILE* fout, char* key)
             return;
         }
 
+        while (key[++key_i] == ' ');
         if (key[++key_i] == 0)
             key_i = 0;
     }
@@ -50,9 +53,17 @@ void vigenere_encrypt_file (FILE* fin, FILE* fout, char* key)
 // 10 points TODO
 void vigenere_encrypt_string (char* str, char* key)
 {
-    int key_len = strlen(key);
+    int key_i = 0;
     for (int i = 0; str[i] != 0; i++)
-        str[i] = vigenere_shift_letter(str[i], key[i % key_len]);
+    {
+        if (str[i] == ' ')
+            continue;
+        str[i] = vigenere_shift_letter(str[i], key[key_i]);
+
+        while (key[++key_i] == ' ');
+        if (key[++key_i] == 0)
+            key_i = 0;
+    }
 }
 
 void vigenere_demo (int argc, char** argv)
@@ -61,7 +72,7 @@ void vigenere_demo (int argc, char** argv)
     FILE* fout;
     if (argc != 4)
     {
-        printf("Caesar demo: Invalid amount of arguments\n");
+        printf("Vigenere demo: Invalid amount of arguments\n");
         return;
     }
 
