@@ -13,7 +13,10 @@ int main (int argc, char *argv[]) {
     bubble_demo(0x5000);
     merge_demo(0x5000);
     binary_demo();
+    argc = 4;
     caesar_demo(argc, argv);
+    argv[3] = argv[4];
+    vigenere_demo(argc, argv);
     stack_demo();
     return 0;
 }

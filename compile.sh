@@ -8,6 +8,6 @@ cd ..
 if [[ $1 == 'exec' ]] 
 then
     echo "Execution start"
-    ./main.out plain_text.txt enc_text.txt 13 
+    ./main.out plain_text.txt enc_text.txt 13 vigenere
 fi
 
