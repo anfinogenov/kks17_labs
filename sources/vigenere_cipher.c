@@ -37,6 +37,8 @@ void vigenere_encrypt_file (FILE* fin, FILE* fout, char* key)
             break;
         if (temp == ' ')
             continue;
+        if (!isalpha(temp))
+            key_i--;
 
         char errcatcher = fputc(vigenere_shift_letter(temp, key[key_i]), fout);
         if (errcatcher == EOF)
@@ -59,6 +61,8 @@ void vigenere_encrypt_string (char* str, char* key)
     {
         if (str[i] == ' ')
             continue;
+        if (!isalpha(str[i]))
+            key_i--;
         str[i] = vigenere_shift_letter(str[i], key[key_i]);
 
         while (key[key_i] == ' ') key_i++;
