@@ -6,7 +6,7 @@
 
 char vigenere_shift_letter (char c, char letter)
 {
-    int shift = (letter > 'Z') ? letter - 'a' : letter - 'A';
+    int shift = toupper(letter) - 'A';
     if (shift > 26 || shift < -26)
         shift = shift % 26;
 
@@ -22,6 +22,7 @@ char vigenere_shift_letter (char c, char letter)
     else if (!islower(c) && temp > 'Z')
         temp -= 'z'-'a'+1;
 
+    //printf("    %c %c %d %c\n", c, letter, shift, toupper(temp));
     return toupper(temp);
 }
 
@@ -44,7 +45,7 @@ void vigenere_encrypt_file (FILE* fin, FILE* fout, char* key)
             return;
         }
 
-        while (key[++key_i] == ' ');
+        while (key[key_i] == ' ') key_i++;
         if (key[++key_i] == 0)
             key_i = 0;
     }
@@ -60,7 +61,7 @@ void vigenere_encrypt_string (char* str, char* key)
             continue;
         str[i] = vigenere_shift_letter(str[i], key[key_i]);
 
-        while (key[++key_i] == ' ');
+        while (key[key_i] == ' ') key_i++;
         if (key[++key_i] == 0)
             key_i = 0;
     }
