@@ -38,7 +38,7 @@ void binary_demo (void) {
         array[i] = rand()%max;
     }
 
-    bubble_sort(array, 0, size);
+    merge_sort(array, 0, size);
 
     printf("Generated array: ");
     for (int i = 0; i < size; i++) printf("%d ", array[i]);
