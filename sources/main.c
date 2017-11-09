@@ -10,13 +10,22 @@
 
 int main (int argc, char *argv[]) {
     srand(time(NULL));
+    
+    // Sorting algorithms
     bubble_demo(0x5000);
     merge_demo(0x5000);
+
+    // Search algorithm
     binary_demo();
+
+    // Encryption algorithms
     if (argc == 5) argc = 4;
     caesar_demo(argc, argv);
     argv[3] = argv[4];
     vigenere_demo(argc, argv);
-    stack_demo();
+    
+    // Containers
+    stack_array_demo();
+    stack_ptr_demo();
     return 0;
 }
