@@ -7,9 +7,11 @@
 #include "../headers/sort.h"
 #include "../headers/single_list.h"
 #include "../headers/vigenere_cipher.h"
+#include "../headers/test.h"
 
 int main (int argc, char *argv[]) {
     srand(time(NULL));
+    if (!self_test()) exit(1);
     
     // Sorting algorithms
     bubble_demo(0x5000);

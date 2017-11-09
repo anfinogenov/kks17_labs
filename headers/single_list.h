@@ -11,8 +11,8 @@ void push (List** head, int value);
 int pop (List** head);
 int peek (List* data);
 
-void push_array (int* array, int value);
-int pop_array (int* array);
+void push_array (int** array, int value);
+int pop_array (int** array);
 int peek_array (const int* array);
 
 void stack_ptr_demo(void);

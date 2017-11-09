@@ -62,21 +62,21 @@ int* new_array_list (int value) {
     return array;
 }
 
-void push_array (int* array, int value) {
-    int size = ++array[0];
-    array[size] = value;
-    array = (int*)realloc(array, (size+3)*sizeof(int));
+void push_array (int** array, int value) {
+    int size = ++(*array)[0];
+    (*array)[size] = value;
+    *array = (int*)realloc(*array, (size+3)*sizeof(int));
 }
 
-int pop_array (int* array) {
-    int size = array[0];
+int pop_array (int** array) {
+    int size = (*array)[0];
     if (size == 0) {
-        fprintf(stderr, "err: stack underflow\n");
+        //fprintf(stderr, "err: stack underflow\n");
         exit(-1);
     }
-    int returned = array[size];
-    array = (int*)realloc(array, (size+2)*sizeof(int));
-    array[0]--;
+    int returned = (*array)[size];
+    (*array) = (int*)realloc(*array, (size+2)*sizeof(int));
+    (*array)[0]--;
     return returned;
 }
 
@@ -91,20 +91,20 @@ void stack_array_demo () {
     puts("Created new list with initial value of 0");
     
     for (int i = 1; i < 5; i++) {
-        push_array(stack, i);
+        push_array(&stack, i);
         printf("Pushed: %d\n", i);
     }
 
     for (int i = 0; i < 3; i++) {
-        printf("Pop: got %d\n", pop_array(stack));
+        printf("Pop: got %d\n", pop_array(&stack));
     }
 
     for (int i = 6; i < 11; i++) {
-        push_array(stack, i);
+        push_array(&stack, i);
         printf("Pushed: %d\n", i);
     }
 
     for (int i = 1; i < 15; i++) {
-        printf("Pop: got %d\n", pop_array(stack));
+        printf("Pop: got %d\n", pop_array(&stack));
     }
 }
