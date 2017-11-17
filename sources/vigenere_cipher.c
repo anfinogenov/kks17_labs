@@ -86,7 +86,7 @@ void vigenere_demo (int argc, char** argv)
     fin = fopen(argv[1], "r");
 
     char* out_name = (char*)malloc(sizeof(char)*(strlen(argv[2])+10));
-    snprintf(out_name, strlen(argv[2])+10, "vigenere_%s", argv[2]);
+    snprintf(out_name, strlen(argv[2])+10, "videmo_%s", argv[2]);
 
     fout = fopen(out_name, "w");
     free(out_name);

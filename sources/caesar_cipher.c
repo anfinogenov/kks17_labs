@@ -52,7 +52,7 @@ void caesar_demo (int argc, char** argv) {
     fin = fopen(argv[1], "r");
 
     char* out_name = (char*)malloc(sizeof(char)*(strlen(argv[2])+8));
-    snprintf(out_name, strlen(argv[2])+8, "caesar_%s", argv[2]); 
+    snprintf(out_name, strlen(argv[2])+8, "cademo_%s", argv[2]); 
 
     fout = fopen(out_name, "w");
     free(out_name);

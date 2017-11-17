@@ -11,11 +11,19 @@
 
 int main (int argc, char *argv[]) {
     srand(time(NULL));
-    if (!self_test()) exit(1);
+    if (self_test()) 
+    {
+        printf("Self-test failed!\n");
+        exit(1);
+    }
+    else 
+    {
+        printf("Self-test passed!\n");
+    }
     
     // Sorting algorithms
-    bubble_demo(0x5000);
-    merge_demo(0x5000);
+    bubble_demo(0x50); // 0x5000
+    merge_demo(0x50); // 0x5000
 
     // Search algorithm
     binary_demo();
