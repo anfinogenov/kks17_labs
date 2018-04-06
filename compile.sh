@@ -8,14 +8,14 @@ fi
 
 while getopts "ec" opt
 do
-case $opt in 
-c)  cd sources; 
-    echo -n "Compilation start"; 
-    time gcc `ls . | grep .c$` ../tests/test.c -o ../main.out && 
-    echo -e "Compilation success!\n"; 
+case $opt in
+c)  cd sources;
+    echo -n "Compilation start";
+    time gcc `ls . | grep .c$` ../tests/test.c -o ../main.out &&
+    echo -e "Compilation success!\n";
     cd ..;;
-e)  echo "Execution start"; 
-    ./main.out plain_text.txt enc_text.txt 13 vigenere; 
+e)  echo "Execution start";
+    ./main.out plain_text.txt enc_text.txt 13 vigenere > .exec_out;
     echo "Execution ended, result: $?";;
 esac
 done

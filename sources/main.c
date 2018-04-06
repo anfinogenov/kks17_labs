@@ -9,18 +9,20 @@
 #include "../headers/vigenere_cipher.h"
 #include "../headers/test.h"
 
-int main (int argc, char *argv[]) {
+int main (int argc, char **argv) 
+{
     srand(time(NULL));
-    if (self_test()) 
+
+    if (self_test())
     {
         printf("Self-test failed!\n");
         exit(1);
     }
-    else 
+    else
     {
         printf("Self-test passed!\n");
     }
-    
+
     // Sorting algorithms
     bubble_demo(0x50); // 0x5000
     merge_demo(0x50); // 0x5000
@@ -33,7 +35,7 @@ int main (int argc, char *argv[]) {
     caesar_demo(argc, argv);
     argv[3] = argv[4];
     vigenere_demo(argc, argv);
-    
+
     // Containers
     stack_array_demo();
     stack_ptr_demo();

@@ -7,13 +7,13 @@ typedef struct List {
 } List;
 
 List* new_list (int value);
-void push (List** head, int value);
-int pop (List** head);
-int peek (List* data);
+List* push (List** head, int value);
+int pop (List** head, int* flag);
+int peek (List* data, int* flag);
 
-void push_array (int** array, int value);
-int pop_array (int** array);
-int peek_array (const int* array);
+int* push_array (int** array, int value);
+int pop_array (int** array, int* flag);
+int peek_array (const int* array, int* flag);
 
 void stack_ptr_demo(void);
 void stack_array_demo(void);
